@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { proPublicaKey } from './../api-keys';
+import { Router } from '@angular/router';
 
 import { ProPublicaService } from './../pro-publica.service';
+import { Committee } from './../committee.model';
 
 @Component({
   selector: 'app-committee-list',
@@ -11,20 +11,58 @@ import { ProPublicaService } from './../pro-publica.service';
   providers: [ProPublicaService]
 })
 export class CommitteeListComponent implements OnInit {
+  senateCommitteeList: any[] = null;
+  houseCommitteeList: any[] = null;
 
-  constructor(private http: Http) { }
+  constructor(private proPublicaService: ProPublicaService, private router: Router) { }
 
   ngOnInit() {
+    this.getSenate();
+    this.getHouse();
   }
 
   getSenate() {
-    let headers = new Headers();
-    headers.append('X-API-Key',proPublicaKey);
-    let options = new RequestOptions({headers: headers});
-    return this.http.get('https://api.propublica.org/congress/v1/115/senate/members.json', {
-      headers: headers
-    }).subscribe(response => {
-      console.log(response.json());
+    this.proPublicaService.getSenateCommittees().subscribe(response => {
+      let output: Committee[] = [];
+      response.json().results[0].committees.forEach(committee => {
+        let newCommittee = new Committee(committee.id, committee.name, committee.chair);
+        committee.subcommittees.forEach((subcomm) => {
+          newCommittee.subcommittees.push(subcomm.name);
+        });
+        output.push(newCommittee);
+      });
+      this.senateCommitteeList = output;
     });
   }
+
+  getHouse() {
+    this.proPublicaService.getHouseCommittees().subscribe(response => {
+      let output: Committee[] = [];
+      console.log(response.json());
+      response.json().results[0].committees.forEach(committee => {
+        let newCommittee = new Committee(committee.id, committee.name, committee.chair);
+        committee.subcommittees.forEach((subcomm) => {
+          newCommittee.subcommittees.push(subcomm.name);
+        });
+        output.push(newCommittee);
+      });
+      this.houseCommitteeList = output;
+    });
+  }
+
+  goToCommitteeDetail(clickedCommittee: Committee) {
+    console.log(clickedCommittee);
+    this.router.navigate(['committees', clickedCommittee.id])
+  }
 }
+
+
+
+// let output: Committee[];
+// response.json().results.committees.forEach(committee => {
+//   let newCommittee = new Committee(committee.name, committee.chair);
+//   committee.subcommittees.forEach((subcomm) => {
+//     newCommittee.subcommittees.push(subcomm.name);
+//   });
+//   output.push(newCommittee);
+// });

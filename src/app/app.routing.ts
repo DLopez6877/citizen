@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LegislatorListComponent } from './legislator-list/legislator-list.component';
 import { BillListComponent } from './bill-list/bill-list.component';
 import { CommitteeListComponent } from './committee-list/committee-list.component';
+import { CommitteeDetailComponent } from './committee-detail/committee-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -21,6 +22,10 @@ const appRoutes: Routes = [
   {
     path: 'recent-bills',
     component: BillListComponent
+  },
+  {
+    path: 'committees/:id',
+    component: CommitteeDetailComponent
   }
 ];
 

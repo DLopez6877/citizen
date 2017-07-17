@@ -1,5 +1,22 @@
-<p>
-  committee-list works!
-</p>
+<div class="row">
+  <div class="col-xs-6">
+    <h2>Senate:</h2>
+    <div class="row" *ngFor="let committee of senateCommitteeList">
+      <a><ul class="list-group" (click)="goToCommitteeDetail(committee)">
+        <li class="list-group-item">{{committee.name}}</li>
+        <li class="list-group-item">Chair: {{committee.chair}}</li>
+      </ul></a>
+    </div>
+  </div>
 
-<button (click)="getSenate()" class="btn btn-default">GET SENATE</button>
+  <div class="col-xs-6">
+    <h2>House:</h2>
+    <div class="row" *ngFor="let committee of houseCommitteeList">
+      <a><ul class="list-group" (click)="goToCommitteeDetail(committee)">
+        <li class="list-group-item">{{committee.name}}</li>
+        <li class="list-group-item">Chair: {{committee.chair}}</li>
+      </ul></a>
+    </div>
+  </div>
+
+</div>

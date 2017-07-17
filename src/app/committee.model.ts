@@ -1,5 +1,7 @@
 import { Legislator } from './legislator.model';
 
 export class Committee {
-  constructor(public name: string, public description: string, public members: Legislator[]) { }
+  members: Legislator[] = [];
+  subcommittees: string[] = [];
+  constructor(public id: string, public name: string, public chair: string) { }
 }

@@ -9,24 +9,27 @@ export class ProPublicaService {
 
   constructor(private http: Http) { }
 
-  // getSenate() {
-  //   this.http.get('https://api.propublica.org/congress/v1/115/senate/members.json',
-  //     { headers: "X-API-Key: proPublicaKey" });
-  // }
-
-  // createAuthorizationHeader(headers: Headers) {
-  //   headers.append('Authorization', 'Basic ' +
-  //     btoa('username:password'));
-  // }
-  //
-  getSenate(url) {
+  getCommitteeById(id: string) {
     let headers = new Headers();
-    headers.append('X-API-Key','proPublicaKey');
-    // this.createAuthorizationHeader(headers);
-    return this.http.get(url, {
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get(`https://api.propublica.org/congress/v1/115/senate/committees/${id}.json`, {
       headers: headers
-    }).subscribe(response => {
-      console.log(response.json());
+    });
+  }
+
+  getSenateCommittees() {
+    let headers = new Headers();
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get('https://api.propublica.org/congress/v1/115/senate/committees.json', {
+      headers: headers
+    });
+  }
+
+  getHouseCommittees() {
+    let headers = new Headers();
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get('https://api.propublica.org/congress/v1/115/house/committees.json', {
+      headers: headers
     });
   }
 
