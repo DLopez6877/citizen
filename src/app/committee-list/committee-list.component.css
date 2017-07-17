@@ -1,1 +1,27 @@
+.panel {
+  margin: 0 10px 20px 10px;
+  box-shadow: 1px 1px 3px grey;
+  cursor: pointer;
+  text-align: center;
+  color: #337ab7;
+}
 
+.panel:hover .panel-heading {
+  background-color: lightblue;
+  transition: all .3s ease-in-out;
+}
+
+.panel:hover {
+  background-color: #f3f3f3;
+  box-shadow: 0px 0px 30px #337ab7;
+  transition: all .3s ease-in-out;
+}
+
+.panel-heading {
+  margin: 0;
+  min-height: 58px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
