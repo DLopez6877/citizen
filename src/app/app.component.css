@@ -1,0 +1,23 @@
+li {
+  list-style: none;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.logo {
+  font-size: 2em;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.logo:hover {
+  text-decoration: underline;
+  color: red;
+}
+
+.logo:focus {
+  outline: none;
+}

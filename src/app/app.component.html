@@ -1,5 +1,22 @@
-<h1>
+<h1 class="jumbotron">
   {{title}}
 </h1>
-
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-lg-2">
+      <nav class="navbar navbar-default navbar-fixed-side">
+        <li class="logo" routerLink="">{{title}}</li>
+        <hr>
+        <li><a routerLink="legislators">Look up legislators by zip</a></li>
+        <hr>
+        <li><a routerLink="committees">List of committees in house and senate</a></li>
+        <hr>
+        <li><a routerLink="recent-bills">Recent bills</a></li>
+        <hr>
+      </nav>
+    </div>
+    <div class="col-sm-9 col-lg-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div><!--/container-->
