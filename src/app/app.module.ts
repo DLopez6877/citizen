@@ -10,6 +10,8 @@ import { LegislatorListComponent } from './legislator-list/legislator-list.compo
 import { CommitteeListComponent } from './committee-list/committee-list.component';
 import { CommitteeDetailComponent } from './committee-detail/committee-detail.component';
 
+import { routing } from './app.routing';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { CommitteeDetailComponent } from './committee-detail/committee-detail.co
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
