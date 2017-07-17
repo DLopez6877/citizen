@@ -26,10 +26,10 @@ export class CommitteeDetailComponent implements OnInit {
     this.route.params.forEach((urlParameters) => {
       this.committeeId = urlParameters['id'];
     })
-    this.committeeToDisplay = this.proPublicaService.getCommitteeById(this.committeeId);
-    console.log( this.proPublicaService.getCommitteeById(this.committeeId).subscribe(response => {
-      console.log(response.json());
-    }));
+
+    this.proPublicaService.getCommitteeById(this.committeeId).subscribe(response => {
+      this.committeeToDisplay = response.json().results[0];
+    });
   }
 
 }

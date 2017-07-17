@@ -9,7 +9,7 @@ export class ProPublicaService {
 
   constructor(private http: Http) { }
 
-  getCommitteeById(id: string) {
+  getCommitteeById(id: string): Observable<any> {
     let headers = new Headers();
     headers.append('X-API-Key',proPublicaKey);
     return this.http.get(`https://api.propublica.org/congress/v1/115/senate/committees/${id}.json`, {

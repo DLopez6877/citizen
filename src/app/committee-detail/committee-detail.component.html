@@ -1,6 +1,5 @@
 <div class="well">
-  <h1>commitee detail works</h1>
-  <h3>{{(committeeToDisplay | async)?.name}}</h3>
-  <h4>{{(committeeToDisplay | async)?.chair}}</h4>
-  <p>{{(committeeToDisplay | async)?.id}}</p>
+  <h3>{{committeeToDisplay?.committee}}</h3>
+  <h4>{{committeeToDisplay?.chamber}}</h4>
+  <p>{{committeeToDisplay?.url}}</p>
 </div>
