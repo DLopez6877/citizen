@@ -65,10 +65,18 @@ export class ProPublicaService {
     });
   }
 
-  getBillsbyTypeAndChamber(type: string, chamber: string) {
+  getBillsbyTypeAndChamber(type: string, chamber: string): Observable<any>  {
     let headers = new Headers();
     headers.append('X-API-Key',proPublicaKey);
-    return this.http.get(`GET https://api.propublica.org/congress/v1/115/${chamber}/bills/${type}.json`, {
+    return this.http.get(`https://api.propublica.org/congress/v1/115/${chamber}/bills/${type}.json`, {
+      headers: headers
+    });
+  }
+
+  getBillById(id: string): Observable<any> {
+    let headers = new Headers();
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get(`https://api.propublica.org/congress/v1/115/bills/${id}.json`, {
       headers: headers
     });
   }

@@ -3,17 +3,17 @@
     <form class="form-inline" action="index.html" method="post">
       <div class="form-group">
         <label for="type">Status:</label>
-        <select class="form-control" name="type">
+        <select class="form-control" name="type" (change)="changeBillType($event.target.value)">
           <option value="introduced">Introduced</option>
           <option value="updated">Updated</option>
           <option value="passed">Passed</option>
-          <option value="enacted">Enacted</option>
+          <!-- <option value="enacted">Enacted</option> -->
           <option value="vetoed">Vetoed</option>
         </select>
       </div>
       <div class="form-group">
         <label for="type">Chamber:</label>
-        <select class="form-control" name="type">
+        <select class="form-control" name="type" (change)="changeBillChamber($event.target.value)">
           <option value="house">House</option>
           <option value="senate">Senate</option>
         </select>
@@ -21,6 +21,12 @@
     </form>
   </div>
 </div>
+<!-- <h1 *ngIf="billType = 'passed' && billChamber = 'senate' && bills.length === 0">Whoops. Something went wrong.</h1> -->
 <div class="row">
-  <h1>Content!</h1>
+  <div class="row" *ngFor="let bill of bills">
+    <div class="panel panel-default" (click)="goToBillDetail(bill)">
+      <p class="panel-heading"><strong>{{bill.number}}</strong> </p>
+      <p class="panel-body">{{bill.title}}</p>
+      <p class="panel-footer">{{bill.sponsor_name}} ({{bill.sponsor_party}}-{{bill.sponsor_state}})</p>
+  </div>
 </div>

@@ -27,7 +27,7 @@ export class LegislatorDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
       this.legislatorId = urlParameters['id'];
-    })
+    });
 
     this.proPublicaService.getLegislatorById(this.legislatorId).subscribe(response => {
       this.legislatorToDisplay = response.json().results[0];

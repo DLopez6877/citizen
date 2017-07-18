@@ -11,7 +11,9 @@ import { ProPublicaService } from './../pro-publica.service';
   providers: [ProPublicaService]
 })
 export class BillListComponent implements OnInit {
-  bills;
+  bills: any[];
+  billType: string = 'introduced';
+  billChamber: string = 'house';
 
   constructor(
     private proPublicaService: ProPublicaService,
@@ -23,6 +25,26 @@ export class BillListComponent implements OnInit {
   }
 
   getBills() {
+    this.proPublicaService.getBillsbyTypeAndChamber(this.billType, this.billChamber).subscribe(response => {
+      this.bills = response.json().results[0].bills;
+      console.log(response.json().results[0]);
+    });
+  }
 
+  goToBillDetail(bill) {
+    let billId = bill.bill_id.slice(0, -4);
+    this.router.navigate(['bills', billId]);
+  }
+
+  changeBillType(value: string) {
+    console.log(value);
+    this.billType = value;
+    this.getBills();
+  }
+
+  changeBillChamber(value: string) {
+    console.log(value);
+    this.billChamber = value;
+    this.getBills();
   }
 }

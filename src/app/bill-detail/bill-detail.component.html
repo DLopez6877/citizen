@@ -1,3 +1,13 @@
-<p>
-  bill-detail works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{billToDisplay?.title}}</h3>
+    <h3 class="panel-title"><strong>Sponsor: </strong>{{billToDisplay?.sponsor}} <strong>Introduced: </strong>{{billToDisplay?.introduced_date}}</h3>
+  </div>
+  <div class="panel-body">
+    <p><strong>Latest Major Action: </strong>{{billToDisplay?.latest_major_action}} on {{billToDisplay?.latest_major_action_date}}</p>
+    Content!
+  </div>
+  <div class="panel-footer">
+    <a href="{{billToDisplay?.govtrack_url}}">GovTrack this bill.</a> | <a href="{{billToDisplay?.congressdotgov_url}}">View the text of this bill.</a>
+  </div>
+</div>
