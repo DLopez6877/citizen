@@ -1,3 +1,14 @@
-<p>
-  legislator-detail works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{legislatorToDisplay?.first_name}} {{legislatorToDisplay?.last_name}}</h3>
+  </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">{{legislatorToDisplay?.roles[0].party}}-{{legislatorToDisplay?.roles[0].state}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group">
+      <a class="list-group-item" *ngFor="let committee of legislatorToDisplay?.roles[0].committees" (click)="goToCommitteeDetail(committee)">{{committee.name}}</a>
+    </div>
+  </div>
+  <div *ngIf="legislatorToDisplay?.roles[0].contact_form" class="panel-footer"><a href="{{legislatorToDisplay?.roles[0].contact_form}}">Contact</a></div>
+</div>

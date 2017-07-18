@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { ProPublicaService } from './../pro-publica.service';
 import { Committee } from './../committee.model'
@@ -19,7 +20,8 @@ export class CommitteeDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private proPublicaService: ProPublicaService
+    private proPublicaService: ProPublicaService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -29,8 +31,10 @@ export class CommitteeDetailComponent implements OnInit {
 
     this.proPublicaService.getCommitteeById(this.committeeId).subscribe(response => {
       this.committeeToDisplay = response.json().results[0];
-      console.log(response.json());
     });
   }
 
+  goToLegislatorDetail(clickedLegislator) {
+    this.router.navigate(['legislators', clickedLegislator.id]);
+  }
 }

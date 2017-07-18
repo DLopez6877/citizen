@@ -1,3 +1,25 @@
-<p>
-  legislator-list works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="form-group">
+      <label for="zip-code">Zip Code: </label>
+      <input type="number" name="zip-code" #zipCode value="99501" (keyup)="searchLegislators($event.target.value)">
+    </div>
+  </div>
+  <div *ngIf="zipCode.value.length !== 5" class="row">
+    <h1>Enter your zip code, and we'll show you your legislators.</h1>
+  </div>
+  <div *ngIf="zipCode.value.length === 5" class="row">
+    <div class="col-md-6">
+      <h2>Senate</h2>
+      <ul>
+        <li *ngFor="let legislator of senators" (click)="goToLegislatorDetail(legislator)"><a>{{legislator.name}}</a></li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h2>Congress</h2>
+      <ul>
+        <li *ngFor="let legislator of congressPeople" (click)="goToLegislatorDetail(legislator)"><a>{{legislator.name}} (District: {{legislator.district}})</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

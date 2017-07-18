@@ -9,6 +9,38 @@ export class ProPublicaService {
 
   constructor(private http: Http) { }
 
+  doApiCall(url: string): Observable<any> {
+    let headers = new Headers();
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get(`${url}`, {
+      headers: headers
+    });
+  }
+
+  getLegislatorById(id: string): Observable<any> {
+    let headers = new Headers();
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get(`https://api.propublica.org/congress/v1/members/${id}.json`, {
+      headers: headers
+    });
+  }
+
+  getHouseByDistrict(state: string, district: string): Observable<any> {
+    let headers = new Headers();
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get(`https://api.propublica.org/congress/v1/members/house/${state}/${district}/current.json`, {
+      headers: headers
+    });
+  }
+
+  getSenateByDistrict(state: string): Observable<any> {
+    let headers = new Headers();
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get(`https://api.propublica.org/congress/v1/members/senate/${state}/current.json`, {
+      headers: headers
+    });
+  }
+
   getCommitteeById(id: string): Observable<any> {
     let headers = new Headers();
     headers.append('X-API-Key',proPublicaKey);
@@ -17,7 +49,7 @@ export class ProPublicaService {
     });
   }
 
-  getSenateCommittees() {
+  getSenateCommittees(): Observable<any> {
     let headers = new Headers();
     headers.append('X-API-Key',proPublicaKey);
     return this.http.get('https://api.propublica.org/congress/v1/115/senate/committees.json', {
@@ -25,7 +57,7 @@ export class ProPublicaService {
     });
   }
 
-  getHouseCommittees() {
+  getHouseCommittees(): Observable<any>  {
     let headers = new Headers();
     headers.append('X-API-Key',proPublicaKey);
     return this.http.get('https://api.propublica.org/congress/v1/115/house/committees.json', {

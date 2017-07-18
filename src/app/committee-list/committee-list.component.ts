@@ -14,7 +14,9 @@ export class CommitteeListComponent implements OnInit {
   senateCommitteeList: any[] = null;
   houseCommitteeList: any[] = null;
 
-  constructor(private proPublicaService: ProPublicaService, private router: Router) { }
+  constructor(
+    private proPublicaService: ProPublicaService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getSenate();
@@ -38,7 +40,6 @@ export class CommitteeListComponent implements OnInit {
   getHouse() {
     this.proPublicaService.getHouseCommittees().subscribe(response => {
       let output: Committee[] = [];
-      console.log(response.json());
       response.json().results[0].committees.forEach(committee => {
         let newCommittee = new Committee(committee.id, committee.name, committee.chair);
         committee.subcommittees.forEach((subcomm) => {
@@ -51,18 +52,6 @@ export class CommitteeListComponent implements OnInit {
   }
 
   goToCommitteeDetail(clickedCommittee: Committee) {
-    console.log(clickedCommittee);
-    this.router.navigate(['committees', clickedCommittee.id])
+    this.router.navigate(['committees', clickedCommittee.id]);
   }
 }
-
-
-
-// let output: Committee[];
-// response.json().results.committees.forEach(committee => {
-//   let newCommittee = new Committee(committee.name, committee.chair);
-//   committee.subcommittees.forEach((subcomm) => {
-//     newCommittee.subcommittees.push(subcomm.name);
-//   });
-//   output.push(newCommittee);
-// });
