@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import * as firebase from "firebase";
 
 import { ProPublicaService } from './../pro-publica.service';
 
@@ -14,6 +15,8 @@ import { ProPublicaService } from './../pro-publica.service';
 export class BillDetailComponent implements OnInit {
   billId: string;
   billToDisplay;
+  private user;
+  isStarred: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +34,15 @@ export class BillDetailComponent implements OnInit {
       this.billToDisplay = response.json().results[0];
       console.log(response.json().results[0]);
     });
+  }
+
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
+    console.log(this.user);
+  }
+
+  starBill() {
+    this.isStarred = !this.isStarred;
   }
 
 }

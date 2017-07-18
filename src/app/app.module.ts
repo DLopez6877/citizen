@@ -17,6 +17,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { masterFirebaseConfig } from './api-keys';
+import { BillStarsComponent } from './bill-stars/bill-stars.component';
 
 
 export const firebaseConfig = {
@@ -36,7 +37,8 @@ export const firebaseConfig = {
     CommitteeListComponent,
     CommitteeDetailComponent,
     LegislatorDetailComponent,
-    UserAuthComponent
+    UserAuthComponent,
+    BillStarsComponent
   ],
   imports: [
     BrowserModule,

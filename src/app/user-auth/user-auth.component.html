@@ -1,9 +1,10 @@
-<ul class="nav navbar-nav navbar-right">
-  <li *ngIf="isLoggedIn">
-    <a>{{userName}}</a>
-    <a (click)="authService.logout()">Log out</a>
-  </li>
-  <li *ngIf ="!isLoggedIn">
-    <a (click)="authService.login()">Log in</a>
-  </li>
-</ul>
+<nav>
+  <ul *ngIf="isLoggedIn" class="nav nav-pills">
+    <li><a>{{userName}}</a></li>
+    <li><a (click)="authService.logout()">Log out</a></li>
+    <li><a routerLink="bills/starred">Starred Bills</a></li>
+  </ul>
+  <ul *ngIf ="!isLoggedIn" class="nav nav-pills">
+    <li><a (click)="authService.login()">Log in</a></li>
+  </ul>
+</nav>

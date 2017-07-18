@@ -8,6 +8,7 @@
     <p>{{billToDisplay?.summary}}</p>
   </div>
   <div class="panel-footer">
+    <span *ngIf="user"><a (click)="starBill()" [class.unstarred]="!isStarred" [class.starred]="isStarred">♥︎ this bill.</a> | </span>
     <a href="{{billToDisplay?.govtrack_url}}">GovTrack this bill.</a> | <a href="{{billToDisplay?.congressdotgov_url}}">View the text of this bill.</a>
   </div>
 </div>
