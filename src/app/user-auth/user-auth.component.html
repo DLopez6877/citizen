@@ -1,0 +1,9 @@
+<ul class="nav navbar-nav navbar-right">
+  <li *ngIf="isLoggedIn">
+    <a>{{userName}}</a>
+    <a (click)="authService.logout()">Log out</a>
+  </li>
+  <li *ngIf ="!isLoggedIn">
+    <a (click)="authService.login()">Log in</a>
+  </li>
+</ul>
