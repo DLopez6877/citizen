@@ -1,5 +1,8 @@
 <div class="well">
   <h3>{{committeeToDisplay?.committee}}</h3>
   <h4>{{committeeToDisplay?.chamber}}</h4>
-  <p>{{committeeToDisplay?.url}}</p>
+  <a href="{{committeeToDisplay?.url}}"><p>Committee Site</p></a>
+  <ul>
+    <li *ngFor="let member of committeeToDisplay?.current_members"> {{member.name}} ({{member.party}}-{{member.state}})</li>
+  </ul>
 </div>

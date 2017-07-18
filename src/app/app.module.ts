@@ -11,6 +11,7 @@ import { CommitteeListComponent } from './committee-list/committee-list.componen
 import { CommitteeDetailComponent } from './committee-detail/committee-detail.component';
 
 import { routing } from './app.routing';
+import { LegislatorDetailComponent } from './legislator-detail/legislator-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { routing } from './app.routing';
     BillDetailComponent,
     LegislatorListComponent,
     CommitteeListComponent,
-    CommitteeDetailComponent
+    CommitteeDetailComponent,
+    LegislatorDetailComponent
   ],
   imports: [
     BrowserModule,

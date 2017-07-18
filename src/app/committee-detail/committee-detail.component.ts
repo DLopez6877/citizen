@@ -29,6 +29,7 @@ export class CommitteeDetailComponent implements OnInit {
 
     this.proPublicaService.getCommitteeById(this.committeeId).subscribe(response => {
       this.committeeToDisplay = response.json().results[0];
+      console.log(response.json());
     });
   }
 
