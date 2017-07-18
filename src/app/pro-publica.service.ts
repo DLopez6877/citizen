@@ -65,4 +65,11 @@ export class ProPublicaService {
     });
   }
 
+  getBillsbyTypeAndChamber(type: string, chamber: string) {
+    let headers = new Headers();
+    headers.append('X-API-Key',proPublicaKey);
+    return this.http.get(`GET https://api.propublica.org/congress/v1/115/${chamber}/bills/${type}.json`, {
+      headers: headers
+    });
+  }
 }
